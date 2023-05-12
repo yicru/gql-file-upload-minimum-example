@@ -1,6 +1,7 @@
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Container, StackDivider, Text, VStack } from '@chakra-ui/react'
 import { graphql } from '@/lib/gql'
 import { useQuery } from 'urql'
+import { ReadTextFileForm } from '@/components/ReadTextFileForm'
 
 const HomePageQuery = graphql(/* GraphQL */ `
   query HomePage {
@@ -14,13 +15,24 @@ export default function Home() {
   })
 
   return (
-    <Container py={8}>
-      <Text fontSize={'xl'} fontWeight={500} color={'gray.600'}>
-        Query Result
-      </Text>
-      <Box bg={'gray.200'} py={2} px={3} mt={2} rounded={'md'}>
-        <Text>{fetching ? 'loading...' : data?.greetings}</Text>
-      </Box>
+    <Container gap={8} py={8}>
+      <VStack alignItems={'stretch'} spacing={8} divider={<StackDivider />}>
+        <Box>
+          <Text fontSize={'xl'} fontWeight={500} color={'gray.600'}>
+            Query
+          </Text>
+          <Box bg={'gray.200'} py={2} px={3} mt={4} rounded={'md'}>
+            <Text>{fetching ? 'loading...' : data?.greetings}</Text>
+          </Box>
+        </Box>
+
+        <Box>
+          <Text fontSize={'xl'} fontWeight={500} color={'gray.600'}>
+            Mutation
+          </Text>
+          <ReadTextFileForm mt={4} />
+        </Box>
+      </VStack>
     </Container>
   )
 }

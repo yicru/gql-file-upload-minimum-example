@@ -30,10 +30,18 @@ export type Query = {
   greetings?: Maybe<Scalars['String']>;
 };
 
+export type ReadTextFileMutationVariables = Exact<{
+  file: Scalars['File'];
+}>;
+
+
+export type ReadTextFileMutation = { __typename?: 'Mutation', readTextFile: string };
+
 export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type HomePageQuery = { __typename?: 'Query', greetings?: string | null };
 
 
+export const ReadTextFileDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ReadTextFile"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"file"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"File"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"readTextFile"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"file"},"value":{"kind":"Variable","name":{"kind":"Name","value":"file"}}}]}]}}]} as unknown as DocumentNode<ReadTextFileMutation, ReadTextFileMutationVariables>;
 export const HomePageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HomePage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"greetings"}}]}}]} as unknown as DocumentNode<HomePageQuery, HomePageQueryVariables>;
