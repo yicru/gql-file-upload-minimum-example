@@ -14,14 +14,25 @@ export default createYoga<{
   graphqlEndpoint: '/api/graphql',
   schema: createSchema({
     typeDefs: /* GraphQL */ `
+      scalar File
+
       type Query {
         greetings: String
+      }
+
+      type Mutation {
+        readTextFile(file: File!): String!
       }
     `,
     resolvers: {
       Query: {
         greetings: () =>
           'This is the `greetings` field of the root `Query` type',
+      },
+      Mutation: {
+        readTextFile: async (_, { file }: { file: File }) => {
+          return await file.text()
+        },
       },
     },
   }),
