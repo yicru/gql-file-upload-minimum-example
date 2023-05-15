@@ -21,6 +21,7 @@ export default createYoga<{
       }
 
       type Mutation {
+        hello(name: String!): String!
         readTextFile(file: File!): String!
       }
     `,
@@ -30,6 +31,9 @@ export default createYoga<{
           'This is the `greetings` field of the root `Query` type',
       },
       Mutation: {
+        hello: (_, { name }: { name: string }) => {
+          return `Hello, ${name}!`
+        },
         readTextFile: async (_, { file }: { file: File }) => {
           return await file.text()
         },

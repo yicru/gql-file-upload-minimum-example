@@ -2,6 +2,7 @@ import { Box, Container, StackDivider, Text, VStack } from '@chakra-ui/react'
 import { graphql } from '@/lib/gql'
 import { useQuery } from 'urql'
 import { ReadTextFileForm } from '@/components/ReadTextFileForm'
+import { HelloForm } from '@/components/HelloForm'
 
 const HomePageQuery = graphql(/* GraphQL */ `
   query HomePage {
@@ -29,6 +30,13 @@ export default function Home() {
         <Box>
           <Text fontSize={'xl'} fontWeight={500} color={'gray.600'}>
             Mutation
+          </Text>
+          <HelloForm mt={4} />
+        </Box>
+
+        <Box>
+          <Text fontSize={'xl'} fontWeight={500} color={'gray.600'}>
+            Mutation - File Upload
           </Text>
           <ReadTextFileForm mt={4} />
         </Box>
